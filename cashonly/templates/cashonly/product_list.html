@@ -1,0 +1,20 @@
+{% extends "cashonly/base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+	<li {% if not category %}class="active"{% endif %}><a href="{% url 'products' %}">{% trans "All categories" %}</a></li>
+	{% for c in categories %}
+	<li {% if c == category %}class="active"{% endif %}><a href="{% url 'products' %}{{c.id}}">{{ c.name }}</a></li>
+	{% endfor %}
+</ul>
+
+<!-- Ugly workaround -->
+<br/>
+
+{% include "cashonly/includes/product_list.html" with products=product_list only %}
+
+{% endblock %}

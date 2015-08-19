@@ -1,0 +1,442 @@
+# German language file for django cashonly app.
+# Copyright (C) 2013 Niklas Brachmann
+# This file is distributed under the same license as the cashonly package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-08 01:14+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: admin.py:14 models.py:170 management/commands/dailydigest.py:40
+msgid "amount"
+msgstr "Betrag"
+
+#: admin.py:17 models.py:103 models.py:153
+msgid "comment"
+msgstr "Kommentar"
+
+#: admin.py:22 models.py:19 views.py:112
+msgid "PIN"
+msgstr "PIN"
+
+#: admin.py:25
+msgid "clear PIN"
+msgstr "PIN löschen"
+
+#: admin.py:38
+msgid "credit change"
+msgstr "Ein-/Auszahlung"
+
+#: admin.py:41
+msgid "change PIN"
+msgstr "PIN ändern"
+
+#: admin.py:49
+msgid "Transactions"
+msgstr "Transaktionen"
+
+#: admin.py:51
+msgid "Transaction link"
+msgstr "Transaktionslink"
+
+#: admin.py:65 api.py:225
+msgid "Payout"
+msgstr "Auszahlung"
+
+#: admin.py:66 api.py:226
+msgid "Deposit"
+msgstr "Einzahlung"
+
+#: admin.py:67 api.py:227
+#, python-format
+msgid "Authorized by %(first)s %(last)s"
+msgstr "Autorisiert von %(first)s %(last)s"
+
+#: formfields.py:11
+msgid "Please enter only digits."
+msgstr "Bitte nur Ziffern eingeben."
+
+#: models.py:18
+msgid "card number"
+msgstr "Kartennummer"
+
+#: models.py:20 views.py:108
+msgid "daily digest"
+msgstr "Tägliche Zusammenfassung"
+
+#: models.py:22
+msgid "credit"
+msgstr "Guthaben"
+
+#: models.py:28 models.py:164 models.py:177
+msgid "account"
+msgstr "Konto"
+
+#: models.py:29
+msgid "accounts"
+msgstr "Konten"
+
+#: models.py:60
+msgid "Purchase"
+msgstr "Einkauf"
+
+#: models.py:101 models.py:114
+msgid "name"
+msgstr "Name"
+
+#: models.py:109
+msgid "product category"
+msgstr "Produktkategorie"
+
+#: models.py:110
+msgid "product categories"
+msgstr "Produktkategorien"
+
+#: models.py:116
+msgid "price"
+msgstr "Preis"
+
+#: models.py:117
+msgid "active"
+msgstr "Aktiv"
+
+#: models.py:119
+msgid "category"
+msgstr "Kategorie"
+
+#: models.py:120 models.py:123
+msgid "image"
+msgstr ""
+
+#: models.py:130 models.py:154 models.py:178
+msgid "product"
+msgstr "Produkt"
+
+#: models.py:131
+msgid "products"
+msgstr "Produkte"
+
+#: models.py:151 models.py:160
+msgid "barcode"
+msgstr "Strichcode"
+
+#: models.py:161
+msgid "barcodes"
+msgstr "Strichcodes"
+
+#: models.py:166 models.py:183
+msgid "timestamp"
+msgstr "Zeitstempel"
+
+#: models.py:167 management/commands/dailydigest.py:39
+msgid "subject"
+msgstr "Betreff"
+
+#: models.py:168
+msgid "description"
+msgstr "Beschreibung"
+
+#: models.py:173
+msgid "transaction"
+msgstr "Transaktion"
+
+#: models.py:174
+msgid "transactions"
+msgstr "Transaktionen"
+
+#: models.py:179
+msgid "count"
+msgstr "Anzahl"
+
+#: models.py:181
+msgid "unit price"
+msgstr "Stückpreis"
+
+#: models.py:188
+msgid "sales log entry"
+msgstr "Verkaufsprotokolleintrag"
+
+#: models.py:189
+msgid "sales log entries"
+msgstr "Verkaufsprotokolleinträge"
+
+#: models.py:193
+msgid "Cancellation"
+msgstr "Stornierung"
+
+#: views.py:114
+msgid "PIN (confirmation)"
+msgstr "PIN (bestätigen)"
+
+#: views.py:124
+msgid "PINs do not match."
+msgstr "PINs stimmen nicht überein."
+
+#: management/commands/dailydigest.py:38
+msgid "date"
+msgstr "Datum"
+
+#: management/commands/dailydigest.py:64
+msgid "Account Statement"
+msgstr "Kontoauszug"
+
+#: management/commands/debtreminder.py:28
+msgid "Debt Reminder"
+msgstr "Schuldenerinnerung"
+
+#: templates/cashonly/base.html:22 templates/cashonly/buy_confirm.html:17
+#: templates/cashonly/product_detail.html:11
+msgid "Name"
+msgstr "Name"
+
+#: templates/cashonly/base.html:24 templates/cashonly/login.html:25
+msgid "Username"
+msgstr "Benutzername"
+
+#: templates/cashonly/base.html:25
+msgid "Credit"
+msgstr "Guthaben"
+
+#: templates/cashonly/base.html:27
+msgid "Warning!"
+msgstr "Achtung!"
+
+#: templates/cashonly/base.html:27
+#, python-format
+msgid "Only %(debtlimitamount)s&nbsp;&euro; until reaching the debt limit."
+msgstr ""
+"Nur noch %(debtlimitamount)s&nbsp;&euro; bis zum Erreichen des "
+"Schuldenlimits."
+
+#: templates/cashonly/base.html:63
+msgid "Overview"
+msgstr "Übersicht"
+
+#: templates/cashonly/base.html:64 templates/cashonly/includes/product_list.html:12
+msgid "Buy"
+msgstr "Kaufen"
+
+#: templates/cashonly/base.html:65
+msgctxt "monthly staement"
+msgid "Transaction list"
+msgstr "Kontoauszug"
+
+#: templates/cashonly/base.html:66 templates/cashonly/usersettings.html:29
+#: templates/cashonly/usersettings_saved.html:6
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: templates/cashonly/base.html:68
+msgid "Administration"
+msgstr "Administration"
+
+#: templates/cashonly/base.html:80
+msgid "Logout"
+msgstr "Abmelden"
+
+#: templates/cashonly/base.html:92
+#, python-format
+msgid "Welcome, %(firstname)s!"
+msgstr "Herzlich willkommen, %(firstname)s!"
+
+#: templates/cashonly/base.html:98
+msgid "Account information"
+msgstr "Kontoinformationen"
+
+#: templates/cashonly/base.html:102
+msgid "Username:"
+msgstr "Benutzername:"
+
+#: templates/cashonly/base.html:104
+msgid "Full name:"
+msgstr "Realname:"
+
+#: templates/cashonly/base.html:106
+msgid "E-Mail address:"
+msgstr "E-Mail Adresse:"
+
+#: templates/cashonly/base.html:108
+msgid "Credit:"
+msgstr "Guthaben:"
+
+#: templates/cashonly/base.html:117
+msgid "Last purchased products"
+msgstr "Zuletzt gekaufte Produkte"
+
+#: templates/cashonly/base.html:127
+msgid "Your transactions in the last 12 hours"
+msgstr "Transaktionen in den vergangenen 12 Stunden"
+
+#: templates/cashonly/base.html:133
+msgid "There where no transactions in your account in the last 12 hours."
+msgstr "In den vergangenen 12 Stunden wurden keine Transaktionen durchgeführt."
+
+#: templates/cashonly/buy_confirm.html:8 templates/cashonly/buy_error.html:8
+#: templates/cashonly/buy_thanks.html:8
+msgid "Buy product"
+msgstr "Produkt kaufen"
+
+#: templates/cashonly/buy_confirm.html:13
+msgid "Confirm purchase."
+msgstr "Einkauf bestätigen."
+
+#: templates/cashonly/buy_confirm.html:18 templates/cashonly/product_detail.html:12
+msgid "Price"
+msgstr "Preis"
+
+#: templates/cashonly/buy_confirm.html:19 templates/cashonly/product_detail.html:13
+msgid "Category"
+msgstr "Kategorie"
+
+#: templates/cashonly/buy_confirm.html:22
+msgid "Do you really want to buy this product?"
+msgstr "Möchtest du dieses Produkt wirklich kaufen?"
+
+#: templates/cashonly/buy_confirm.html:23 templates/cashonly/buy_confirm.html.py:24
+msgid "Yes"
+msgstr "Ja"
+
+#: templates/cashonly/buy_confirm.html:25
+msgid "No"
+msgstr "Nein"
+
+#: templates/cashonly/buy_error.html:11
+msgid "You cannot buy this product, as the debt limit has been reached."
+msgstr ""
+"Du kannst dieses Produkt nicht kaufen, da das Schuldenlimit erreicht wurde."
+
+#: templates/cashonly/buy_error.html:14 templates/cashonly/buy_thanks.html:14
+#: templates/cashonly/usersettings_saved.html:11
+msgid "Back"
+msgstr "Zurück"
+
+#: templates/cashonly/buy_thanks.html:11
+msgid "Thanks for your purchase!"
+msgstr "Danke für deinen Einkauf."
+
+#: templates/cashonly/login.html:24
+msgid "Please sign in"
+msgstr "Bitte anmelden."
+
+#: templates/cashonly/login.html:26
+msgid "Password"
+msgstr "Passwort"
+
+#: templates/cashonly/login.html:27
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: templates/cashonly/product_detail.html:8
+msgid "Product details"
+msgstr "Produktdetails"
+
+#: templates/cashonly/product_list.html:10
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+#: templates/cashonly/transaction_list.html:7
+msgctxt "monthly statement"
+msgid "Transaction list"
+msgstr "Kontoauszug"
+
+#: templates/cashonly/transaction_list.html:13
+msgid "less detailed"
+msgstr "weniger Details"
+
+#: templates/cashonly/transaction_list.html:15
+msgid "more detailed"
+msgstr "mehr Details"
+
+#: templates/cashonly/transaction_list.html:24
+#, python-format
+msgid "Page %(current)s of %(num)s"
+msgstr "Seite %(current)s von %(num)s"
+
+#: templates/cashonly/transaction_list.html:30
+msgid "No transactions have been made, yet."
+msgstr "Es wurden noch keine Transaktionen durchgeführt."
+
+#: templates/cashonly/usersettings.html:34
+msgid "Daily digest"
+msgstr "Tägliche Zusammenfassung"
+
+#: templates/cashonly/usersettings.html:36
+msgid ""
+"The digest will be sent nightly, as long as there were transaction made in "
+"the past 24 hours."
+msgstr ""
+"Der Kontoauszug wird nachts versandt, sofern in den vergangenen 24 Stunden "
+"Kontobewegungen stattgefunden haben."
+
+#: templates/cashonly/usersettings.html:40 templates/cashonly/usersettings.html:60
+msgid "Save"
+msgstr ""
+
+#: templates/cashonly/usersettings.html:52
+msgid "Change PIN"
+msgstr "PIN ändern"
+
+#: templates/cashonly/usersettings.html:54
+msgid ""
+"The PIN is asked for after scanning the member's ID card. If this field is "
+"left blank, no PIN will be needed to log in."
+msgstr ""
+"Der PIN wird nach dem Einscannen des Mitgliederausweises abgefragt. Wenn das "
+"Feld leergelassen wird, wird kein PIN abgefragt."
+
+#: templates/cashonly/usersettings.html:75 templates/cashonly/usersettings.html:82
+msgid "Clear PIN"
+msgstr "PIN löschen"
+
+#: templates/cashonly/usersettings.html:78
+msgid "Do you really want to clear your PIN?"
+msgstr "Möchtest du deinen PIN wirklich löschen?"
+
+#: templates/cashonly/usersettings.html:81
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: templates/cashonly/usersettings_saved.html:9
+msgid "The settings have been saved successfully!"
+msgstr "Die Einstellungen wurden erfolgreich gespeichert."
+
+#: templates/cashonly/includes/product_list.html:8
+msgid "Product image"
+msgstr "Produktbild"
+
+#: templates/cashonly/includes/transaction_list.html:7
+msgid "Date"
+msgstr "Datum"
+
+#: templates/cashonly/includes/transaction_list.html:8
+msgid "Subject"
+msgstr "Betreff"
+
+#: templates/cashonly/includes/transaction_list.html:9
+msgid "Description"
+msgstr "Beschreibung"
+
+#: templates/cashonly/includes/transaction_list.html:10
+msgctxt "money"
+msgid "amount"
+msgstr "Betrag"
+
+#~ msgid "Actions"
+#~ msgstr "Aktionen"
+
+#~ msgid "Details"
+#~ msgstr "Details"
+
+#~ msgctxt "login"
+#~ msgid "Remember me"
+#~ msgstr "Angemeldet bleiben"

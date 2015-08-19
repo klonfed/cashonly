@@ -1,0 +1,24 @@
+{% load static %}
+{% load i18n %}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>{% trans "Date" %}</th>
+			<th>{% trans "Subject" %}</th>
+			<th class="hidden-xs">{% trans "Description" %}</th>
+			<th style="text-align: right;">{% trans "amount" context "money" %}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for t in transactions %}
+		<tr>
+			<td class="visible-xs">{{ t.timestamp|date:'d.m.y' }}</td>
+			<td class="hidden-xs">{{ t.timestamp|date:'DATE_FORMAT' }}, {{ t.timestamp|date:'H:i' }}</td>
+			<td>{% trans t.subject %}<span class="visible-xs">{% if detailed %}<br/>{% trans t.description %}{% endif %}</span></td>
+			<td class="hidden-xs">{% trans t.description %}</td>
+			<td style="text-align: right; color: {% if t.amount < 0 %}red{% else %}green{% endif %}">{{ t.amount|floatformat:2 }} &euro;</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

@@ -1,0 +1,24 @@
+{% load i18n %}
+Hallo, {{ name }}!
+
+du erhältst diese automatisch generierte Mail des Kassensystems, da es
+innerhalb der letzten {{ range }} Stunden folgende Bewegungen auf deinem Konto gab:
+
+
+{{ "Datum"|ljust:lengths.timestamp }}   {{ "Betreff"|ljust:lengths.description }}    {{ "Betrag"|rjust:lengths.amount }}
+{% for t in tl %}
+{{ t.timestamp|date:"SHORT_DATETIME_FORMAT"|ljust:lengths.timestamp }}   {% trans t.subject|ljust:lengths.description %}   {{ t.amount|floatformat:2|rjust:lengths.amount }}€
+{% for line in t.description %}{{ ""|ljust:lengths.timestamp }}   {{ line }}{% endfor %}
+{% endfor %}
+       {{ "------------"|rjust:lengths.sum }}   
+      {{ sum|floatformat:2|rjust:lengths.sum }}€
+
+Dein aktuelles Guthaben beträgt {{ credit|floatformat:2 }}€.
+
+Es grüßt
+   das Kassensystem
+
+PS: Wenn du diese Mail in Zukunft nicht mehr erhalten, oder andere Einstellungen
+    ändern möchtest, so kannst du das auf der folgenden Seite tun:
+    {{ url }}
+    (im internen Netzwerk des Vereins)

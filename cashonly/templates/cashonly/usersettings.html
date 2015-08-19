@@ -1,0 +1,87 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+{% load bootstrap %}
+{% load staticfiles %}
+
+{% block head %}
+{{ block.super }}
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#pin-submit").click(function(event) {
+		pin = $("input[name=\"pin\"]").val();
+		pin_confirm = $("input[name=\"pin_confirm\"]").val();
+		if((pin == "") && (pin_confirm == "")) {
+			event.preventDefault();	
+			$("#clear-pin-modal").modal();
+		}
+	});
+	$("#clear-pin-continue").click(function() {
+		$("#pin-form").submit();
+	});
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Preferences" %} </h1>
+
+<div class="row">
+<div class="col-xs-12 col-sm-6">
+<div class="panel panel-default">
+<div class="panel-heading">{% trans "Daily digest" %}</div>
+<div class="panel-body">
+<p>{% blocktrans %}The digest will be sent nightly, as long as there were transaction made in the past 24 hours.{% endblocktrans %}
+<form action="{% url 'usersettings' %}settings/" method="post" class="forml" role="form">
+{% csrf_token %}
+{{ settings_form|bootstrap }}
+		<input type="submit" class="btn btn-primary" value="{% trans "Save" %}" />
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+	</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div class="col-xs-12 col-sm-6">
+<div class="panel panel-default">
+<div class="panel-heading">{% trans "Change PIN" %}</div>
+<div class="panel-body">
+<p>{% blocktrans %}The PIN is asked for after scanning the member's ID card. If this field is left blank, no PIN will be needed to log in.{% endblocktrans %}</p>
+<form action="{% url 'usersettings' %}pin/" method="post" id="pin-form" class="form-horizontal" role="form">
+{% csrf_token %}
+{{ pin_form|bootstrap_horizontal:'col-sm-4' }}
+<div class="form-group">
+	<div class="col-sm-offset-4 col-sm-8">
+		<input id="pin-submit" type="submit" class="btn btn-primary" value="{% trans "Save" %}" />
+	</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="modal fade" id="clear-pin-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">{% trans "Clear PIN" %}</h4>
+			</div>
+			<div class="modal-body">
+				{% blocktrans %}Do you really want to clear your PIN?{% endblocktrans %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Cancel" %}</button>
+				<button type="button" class="btn btn-primary" id="clear-pin-continue">{% trans "Clear PIN" %}</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

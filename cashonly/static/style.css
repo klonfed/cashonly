@@ -1,0 +1,24 @@
+
+body {
+	background-color: #ffcc33;
+	padding-top: 70px;
+}
+
+/* workaround: Prevent "Logout" link from sticking to the screen edge. */
+.navbar-right {
+	padding-right: 1em;
+}
+
+img.product-thumbnail {
+	height: 20ex;
+	max-width: 100%;
+}
+
+#account-info dd {
+	margin-bottom: 1em;
+}
+
+#version-number {
+	color: #c29100;
+}
+

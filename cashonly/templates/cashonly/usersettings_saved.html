@@ -1,0 +1,12 @@
+{% extends "cashonly/base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block content %}
+<h1>{% trans "Preferences" %}</h1>
+
+<div class="alert alert-success">
+{% blocktrans %}The settings have been saved successfully!{% endblocktrans %}
+</div>
+<a class="btn btn-primary" href="{% url 'usersettings' %}">{% trans "Back" %}</a>
+{% endblock %}

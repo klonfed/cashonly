@@ -1,0 +1,11 @@
+{% load i18n %}
+Hallo, {{ name }}!
+
+du erhältst diese automatisch generierte Mail des Kassensystems, da dein
+Guthaben negativ ist. Der Kassenwart würde sich bestimmt freuen, wenn du ihm 
+bei deinem nächsten Besuch Geld gibst.
+
+Dein aktuelles Guthaben beträgt {{ credit|floatformat:2 }}€.
+
+Es grüßt
+   das Kassensystem

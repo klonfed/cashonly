@@ -1,0 +1,15 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+
+<h1>{% trans "Buy product" %}</h1>
+
+<div class="alert alert-danger">
+{% blocktrans %}You cannot buy this product, as the debt limit has been reached.{% endblocktrans %}
+</div>
+
+<a class="btn btn-primary" href="{% url 'products' %}">{% trans "Back" %}</a>
+
+{% endblock %}

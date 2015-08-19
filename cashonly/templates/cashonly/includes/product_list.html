@@ -1,0 +1,17 @@
+{% load static %}
+{% load i18n %}
+
+<div class="row">
+{% for p in products %}
+	<div class="{{ class|default:"col-xs-6 col-md-3" }}">
+		<div class="thumbnail">
+			<img src="{% if p.image_thumbnail %}{{ p.image_thumbnail.url }}{% else %}{% static "images/no-image.png" %}{% endif %}" class="product-thumbnail" alt="{% trans "Product image" %}" />
+			<div class="caption">
+				<h3>{{ p.name }}</h3>
+				<h4>{{ p.price|floatformat:2 }} &euro;</h4>
+				<a class="btn btn-primary" href="{% url 'buy' p.id %}">{% trans "Buy" %}</a>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>

@@ -1,0 +1,159 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Kassensystem</title>
+
+		<script src="{% static "jquery.min.js" %}" type="text/javascript"></script>
+		<script src="{% static "bootstrap/js/bootstrap.min.js" %}" type="text/javascript"></script>
+
+        <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+        <link href="{% static "style.css" %}" rel="stylesheet" />
+
+		<script type="text/javascript">
+			function getuserinfo(xs){
+				if(xs)
+					userinfo = '<strong>{% trans "Name" %}</strong>: {{ user.first_name }} {{ user.last_name }}<br/>';
+				else
+					userinfo = '<strong>{% trans "Username" %}</strong>: {{ user.username }}<br/>';
+				userinfo += '<strong>{% trans "Credit" %}</strong>: {{ user.account.credit }}€<br/>';
+				{% if user.account.credit|add:"35" < 5 %}
+				userinfo += '<span style="color: #FF5252">{% trans "Warning!" %}<br/>{% blocktrans with debtlimitamount=user.account.credit|add:"35"|floatformat:2 %}Only {{ debtlimitamount }}&nbsp;&euro; until reaching the debt limit.{% endblocktrans %}</span>';
+				{% endif %}
+
+				return userinfo;
+			}
+			$(document).ready(function() {
+				$('#userinfo').popover({animation: true, placement: 'bottom', trigger: 'hover', content: getuserinfo(false), html: true, container: '#top-navbar'});
+				$('#xs-userinfo').popover({animation: true, placement: 'bottom', trigger: 'hover', content: getuserinfo(true), html: true, container: '#top-navbar'});
+			});
+		</script>
+
+		{% endblock %}
+    </head>
+<body>
+	<div class="container" id="main">
+		<div class="navbar navbar-default navbar-fixed-top" id="top-navbar">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="navbar-header">
+				<a class="navbar-brand" href="{% url 'overview' %}">Kassensystem</a>
+				<div class="pull-right visible-xs" style="padding-right: 1em">
+					<p class="navbar-text" id="xs-userinfo">
+						<span class="glyphicon glyphicon-info-sign"></span>
+						<strong>{{ user.username }}</strong>
+					</p>
+				</div>
+			</div>
+
+			<div class="collapse navbar-collapse" id="top-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'overview' %}">{% trans "Overview" %}</a></li>
+					<li><a href="{% url 'products' %}">{% trans "Buy" %}</a></li>
+					<li><a href="{% url 'transactions' %}">{% trans "Transaction list" context "monthly staement" %}</a></li>
+					<li><a href="{% url 'usersettings' %}">{% trans "Preferences" %}</a></li>
+					{% if user.is_staff %}
+					<li><a href="{% url 'admin:index' %}">{% trans "Administration" %}</a></li>
+					{% endif %}
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="hidden-xs">
+						<p class="navbar-text" id="userinfo">
+							<span class="glyphicon glyphicon-info-sign"></span>
+							<strong>{{ user.first_name }} {{ user.last_name }}</strong>
+							(<span {% if user.account.credit < 0 %} style="color: red"{% endif %}>{{ user.account.credit|floatformat:2 }}€</span>)
+						</p>
+					</li>
+					<li><a href="{% url 'django.contrib.auth.views.logout_then_login' %}">{% trans "Logout" %}</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							{% block content %}
+
+							<h1>{% blocktrans with firstname=user.first_name %}Welcome, {{ firstname }}!{% endblocktrans %}</h1>
+
+							<div class="row">
+								<div class="col-md-3">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											{% trans "Account information" %}
+										</div>
+										<div class="panel-body">
+											<dl id="account-info">
+												<dt>{% trans "Username:" %}</dt>
+												<dd>{{ user.username }}</dd>
+												<dt>{% trans "Full name:" %}</dt>
+												<dd>{{ user.first_name }} {{ user.last_name }}</dd>
+												<dt>{% trans "E-Mail address:" %}</dt>
+												<dd>{{ user.email }}</dd>
+												<dt>{% trans "Credit:" %}</dt>
+												<dd {% if user.account.credit < 0 %} style="color: red"{% endif %}>{{ user.account.credit|floatformat:2 }}€</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-9">
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+											{% trans "Last purchased products" %}
+										</div>
+										<div class="panel-body">
+											{% include "cashonly/includes/product_list.html" with products=latest_purchases class="col-xs-6 col-md-4" only %}
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="panel panel-info">
+										<div class="panel-heading">
+											{% trans "Your transactions in the last 12 hours" %}
+										</div>
+										{% if latest_transactions %}
+											{% include "cashonly/includes/transaction_list.html" with transactions=latest_transactions only %}
+										{% else %}
+										<div class="panel-body">
+											{% blocktrans %}There where no transactions in your account in the last 12 hours.{% endblocktrans %}
+										</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+
+							{% endblock %}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center" id="version-number">
+						cashonly v{{version_number}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
+
+

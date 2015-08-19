@@ -1,0 +1,32 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+<h1>{% trans "Transaction list" context "monthly statement" %}</h1>
+
+{% if transaction_list %}
+
+<div class="visible-xs">
+{% if detailed %}
+<a href="{% url 'transactions' transaction_list.number %}" class="btn btn-default">{% trans "less detailed" %}</a>
+{% else %}
+<a href="{% url 'transactions_detailed' transaction_list.number %}" class="btn btn-default">{% trans "more detailed" %}</a>
+{% endif %}
+<br/>
+</div>
+
+{% include "cashonly/includes/transaction_list.html" with transactions=transaction_list only %}
+
+<ul class="pagination">
+  <li {% if not transaction_list.has_previous %}class="disabled"{% endif %}><a href="{% if transaction_list.has_previous %}{% if detailed %}{% url 'transactions_detailed' page=transaction_list.previous_page_number %}{% else %}{% url 'transactions' page=transaction_list.previous_page_number %}{% endif %}{% endif %}">&laquo;</a></li>
+  <li><span>{% blocktrans with current=transaction_list.number num=transaction_list.paginator.num_pages %}Page {{ current }} of {{ num }}{% endblocktrans %}</span></li>
+  <li {% if not transaction_list.has_next %}class="disabled"{% endif %}><a href="{% if transaction_list.has_next %}{% if detailed %}{% url 'transactions_detailed' page=transaction_list.next_page_number %}{% else %}{% url 'transactions' page=transaction_list.next_page_number %}{% endif %}{% endif %}">&raquo;</a></li>
+</ul>
+
+
+{% else %}
+{% blocktrans %}No transactions have been made, yet.{% endblocktrans %}
+{% endif %}
+
+{% endblock %}

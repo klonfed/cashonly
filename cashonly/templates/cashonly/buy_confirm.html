@@ -1,0 +1,34 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+
+<h1>{% trans "Buy product" %}</h1>
+
+<div class="row">
+<div class="col-md-offset-2 col-md-8">
+<div class="panel panel-default">
+<div class="panel-heading">{% trans "Confirm purchase." %}</div>
+<div class="panel-body">
+
+<dl class="dl-horizontal">
+<dt>{% trans "Name" %}:</dt><dd>{{ product.name }}</dd>
+<dt>{% trans "Price" %}:</dt><dd>{{ product.price }} €</dd>
+<dt>{% trans "Category" %}:</dt><dd>{{ product.category }}</dd>
+</dl>
+
+<p>{% blocktrans %}Do you really want to buy this product?{% endblocktrans %}</p>
+<a class="btn btn-primary" href="{% url 'buy_really' product.id %}" onclick="this.style.display = 'none'; $('#dummybutton').css('display', 'inline');">{% trans "Yes" %}</a>
+<button class="btn btn-default" style="display: none" id="dummybutton">{% trans "Yes" %}</button>
+<a class="btn btn-default" href="{% url 'products' %}">{% trans "No" %}</a>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

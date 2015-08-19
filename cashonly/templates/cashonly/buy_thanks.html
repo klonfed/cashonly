@@ -1,0 +1,16 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+
+<h1>{% trans "Buy product" %}</h1>
+
+<div class="alert alert-success">
+{% blocktrans %}Thanks for your purchase!{% endblocktrans %}
+</div>
+
+<a class="btn btn-primary" href="{% url 'products' %}">{% trans "Back" %}</a>
+
+{% endblock %}
+

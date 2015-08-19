@@ -1,0 +1,15 @@
+{% extends "cashonly/base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+
+<h1>{% trans "Product details" %}</h1>
+
+<table>
+<tr><th>{% trans "Name" %}:</th><td>{{ product.name }}</td></tr>
+<tr><th>{% trans "Price" %}:</th><td>{{ product.price }}</td></tr>
+<tr><th>{% trans "Category" %}:</th><td>{{ product.category }}</td></tr>
+</table>
+
+{% endblock %}
