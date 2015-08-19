@@ -1,0 +1,6 @@
+Django==1.8.3
+django-auth-ldap==1.2.6
+django-bootstrap-form==3.2
+Pillow==2.9.0
+python-ldap==2.4.20
+
