@@ -87,7 +87,7 @@ class AccountAdmin(admin.ModelAdmin):
 			                      'last': request.user.last_name}
 			if comment is not None and len(comment) > 0:
 				desc += ' (%s)' % (comment)
-			obj.change_credit(aount, subject, desc)
+			obj.change_credit(amount, subject, desc)
 
 		# Make sure the object is saved in any case
 		obj.save()
